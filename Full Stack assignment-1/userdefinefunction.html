@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Function Logic Demo</title>
     <style>
-        /* CSS: Styling the interface */
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f7f6;
@@ -68,27 +68,18 @@
 </div>
 
 <script>
-    // ==========================================
-    // 1. USER-DEFINED FUNCTIONS
-    // ==========================================
-    
-    // Function to calculate square (User-defined)
+   
     function getSquare(n) {
         return n * n;
     }
 
-    // Function to calculate cube (User-defined Arrow Function)
     const getCube = (n) => n * n * n;
 
-    // ==========================================
-    // 2. MAIN LOGIC (Combining Standard & User-defined)
-    // ==========================================
+
 
     function runAllFunctions() {
         const inputElement = document.getElementById('numInput');
-        const display = document.getElementById('output');
-        
-        // STANDARD FUNCTION: parseFloat() - converts string to number
+        const display = document.getElementById('output'); 
         const val = parseFloat(inputElement.value);
 
         if (isNaN(val)) {
@@ -96,15 +87,13 @@
             return;
         }
 
-        // STANDARD FUNCTION: Math.sqrt() - calculates square root
+       
         const root = Math.sqrt(val);
 
-        // CALLING USER-DEFINED FUNCTIONS
         const square = getSquare(val);
         const cube = getCube(val);
 
-        // STANDARD FUNCTION: toFixed(2) - rounds to 2 decimal places
-        // STANDARD FUNCTION: console.log() - outputs to developer console
+       
         console.log("Calculation successful for:", val);
 
         display.innerHTML = `
@@ -118,3 +107,4 @@
 
 </body>
 </html>
+
