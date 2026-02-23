@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Logic Demo</title>
+    <style>
+        /* CSS: Styling the interface */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 350px;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        button:hover { background-color: #0056b3; }
+        .results {
+            margin-top: 20px;
+            text-align: left;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .highlight { color: #d63384; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Calculator JS</h2>
+    <p>Enter a number to see functions in action:</p>
+    <input type="number" id="numInput" placeholder="Enter a number (e.g. 16)">
+    <br>
+    <button onclick="runAllFunctions()">Calculate Results</button>
+
+    <div class="results" id="output">
+        <i>Results will appear here...</i>
+    </div>
+</div>
+
+<script>
+    // ==========================================
+    // 1. USER-DEFINED FUNCTIONS
+    // ==========================================
+    
+    // Function to calculate square (User-defined)
+    function getSquare(n) {
+        return n * n;
+    }
+
+    // Function to calculate cube (User-defined Arrow Function)
+    const getCube = (n) => n * n * n;
+
+    // ==========================================
+    // 2. MAIN LOGIC (Combining Standard & User-defined)
+    // ==========================================
+
+    function runAllFunctions() {
+        const inputElement = document.getElementById('numInput');
+        const display = document.getElementById('output');
+        
+        // STANDARD FUNCTION: parseFloat() - converts string to number
+        const val = parseFloat(inputElement.value);
+
+        if (isNaN(val)) {
+            display.innerHTML = "Please enter a valid number!";
+            return;
+        }
+
+        // STANDARD FUNCTION: Math.sqrt() - calculates square root
+        const root = Math.sqrt(val);
+
+        // CALLING USER-DEFINED FUNCTIONS
+        const square = getSquare(val);
+        const cube = getCube(val);
+
+        // STANDARD FUNCTION: toFixed(2) - rounds to 2 decimal places
+        // STANDARD FUNCTION: console.log() - outputs to developer console
+        console.log("Calculation successful for:", val);
+
+        display.innerHTML = `
+            <p><strong>Standard Root:</strong> ${root.toFixed(2)}</p>
+            <p><strong>User Square:</strong> ${square}</p>
+            <p><strong>User Cube:</strong> ${cube}</p>
+            <p class="highlight">Status: Processed</p>
+        `;
+    }
+</script>
+
+</body>
+</html>
